@@ -30,7 +30,7 @@ function Qr() {
       <a className ="lien_image" href={imageUrl} download>
       <img className="qr" src={imageUrl} alt="img"/>
       </a>) : null}
-      
+      <h1 className="titre_qr">QR code generator</h1>
       </div>
       
       );}

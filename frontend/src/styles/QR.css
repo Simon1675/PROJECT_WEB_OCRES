@@ -2,27 +2,51 @@
 {
     display: flex;
     justify-content: start;
-    margin-top: -10vw;
+    margin-top: 5vw;
     margin-left: 2vw;
 }
 
 .qr_btn
 {
-    margin-top: 2.5vw;
-    background-color:white;
-    color: black;
+    margin-top: 2.8vw;
+    margin-left: 10px;
     font-family: 'Century gothic', 'sans-serif';
     block-size: 2.5vw;
+    background-color:black;
+    color: white;
+    block-size: 2vw;
+    border-width:2px;
+    border-style:solid;
+    border-color:white;
+    border-radius: 10px;
+}
+.titre_qr
+{
+    display: flex;
+    font-size: 20px;
+    color: white;
+    font-family: 'Century gothic', 'sans-serif';
+    width: 200px;
+    margin-top: -3vw;
+    height: 30px;
+    margin-left: 2vw;
+    position: absolute;
 }
 
 .entrée
 {
-    background-color:white;
+    background-color:black;
+    color: white;
     block-size: 2vw;
+    border-width:2px;
+    border-style:solid;
+    border-color:white;
+    border-radius: 10px;
     margin-top: 2.5vw;
 }
 
 .qr
 {
     block-size: 115px;
+    background-color: turquoise;
 }

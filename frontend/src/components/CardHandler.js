@@ -56,6 +56,7 @@ export default class CardHandler extends Component {
         </button>
         
         <div className="CardHandler-deck">{cards}</div>
+        <h1 className="titre_card"> Pick a card !</h1>
         </div>
         );
       }
