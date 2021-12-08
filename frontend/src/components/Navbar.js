@@ -7,7 +7,6 @@ const Navbar = () => {
         <div className="navbar">
             <Link className="Accueil" exact to="/">Home</Link>
             <Link className="Idees" exact to="/idees">Ideas</Link>
-            <Link className="Admin" exact to="/admin">Admin</Link>
             <section className="titres_site">
             <h1 className="titre">Pépite</h1>
             <h2 className="sous-titre">Welcome on Pépite ! The web site that makes no sens...</h2>

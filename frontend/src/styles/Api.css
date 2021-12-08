@@ -1,21 +1,41 @@
-.API
+.type
 {
     display: flex;
     flex-direction: row;
-    block-size: 110px;
+    margin-left: 43.5vw;
+    block-size: 50px;
     border-width:2px;
     border-style:solid;
-    border-color:white;
+    color:white;
     border-radius: 10px;
-    width: 980px;
+    width: 200px;
     margin-top: 10vw;
     margin-bottom: 10px;
+}
+
+.form
+{
+    margin-top: 3vw;
+}
+
+textarea{
+    background-color: white;
+}
+
+input
+{
+    background-color: white;
+}
+
+.btn_submit
+{
+    background-color: white;
 }
 
 .API_titre
 {
     color: white;
     margin-left: 2vw;
-    margin-top: 2vw;
+    margin-top: 10vw;
     font-family: 'Century gothic', 'sans-serif';
 }

@@ -42,5 +42,6 @@
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
     "nodemon": "^2.0.15"
-  }
+  },
+  "Proxy": "http://localhost:8000"
 }
