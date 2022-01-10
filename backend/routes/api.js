@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const nodemon = require('nodemon');
 const concurrently = require('concurrently');
+const cors = require('cors');
 
 const Form = require('../models/formulaire');
 const router = express.Router();
@@ -9,8 +10,8 @@ const router = express.Router();
 //Création de l'API api
 router.get('/', (req, res) => {
     const data = {
-        username: 'hugo',
-        age: 21
+        titre: 'beerpong3D',
+        des: 'jeu video'
     };
     //On vérifie que les exemples d'api sont enregistrées dans la bdd
     Form.find({ })
@@ -23,20 +24,36 @@ router.get('/', (req, res) => {
         });
 });
 
+//Envoie les données au server
 router.post('/save', (req, res) => {
     console.log('Body: ', req.body);
+
+    const newForm = new Form(data);
     res.json({
         msg: 'Bien reçu !'
     });
 })
 
+newForm.save((erro) => {
+    if(error){
+        res.status(200).json({msg: 'erreur'});
+        return;
+    }
+    else {
+        return res.json({
+            msg: 'Bien reçu !'
+        })
+    }
+})
+
 //Création de l'Api name
 router.post('/name', (req, res) => {
     const data = {
-        username: 'simon',
-        age: 22
+        titre: 'jeu de plateforme',
+        des: 'saut avec espace'
     };
     res.json(data);
 });
 
+router.use(cors());
 module.exports = router;

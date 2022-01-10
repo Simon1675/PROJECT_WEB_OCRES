@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect , useState} from 'react';
 import axios from 'axios';
-import Api from '../styles/Api.css'
+import Api from '../styles/Api.css';
 
 class API extends React.Component {
 
@@ -10,15 +10,38 @@ class API extends React.Component {
         body: ''
     };
 
-handleChange = (event) => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
+    componentDidMount = () => {
+        this.getForm();
+    }
 
-        this.setState({
-            [name]: value
+    getForm = () => {
+        axios.get('http://localhost:8000/api')
+        .then((response) => {
+            const data = response.data;
+            this.setState({ post: data});
+            console.log('Bien reçu !');
+        })
+        .catch(() => {
+            alert('Erreur');
         });
-    };
+    }
+
+//handleChange = (event) => {
+    //    const target = event.target;
+      //  const name = target.name;
+      //  const value = target.value;
+
+      //  this.setState({
+      //      [name]: value
+     //   });
+//   };
+handleChange = ({target}) => {
+    const {name, value} = target;
+
+    this.setState({
+        [name]:value
+    });
+}
 
 submit = (event) => {
         event.preventDefault();
@@ -27,17 +50,25 @@ submit = (event) => {
             body: this.state.body
         };
         axios({
-        url: '/api/save',
+        url: 'http://localhost:8000/api/save',
         method: 'FORM',
         data: payload
     })
         .then(() => {
             console.log('Les données ont été envoyé vers le server')
+            this.resetUserInputs();
         })
         .catch(() => {
             console.log('Erreur')
         });;
     };
+
+    resetUserInputs = () => {
+        this.setState({
+            title: '',
+            body: ''
+        })
+    }
 
     render() {
 
@@ -46,7 +77,7 @@ submit = (event) => {
     return(
         <div>
             <h2 className="API_titre">Give us some ideas</h2>
-            <form className="form"> 
+            <form className="form" onSubmit={this.submit}>
                 <div className="form-input1"></div>
                     <input 
                     type="text" 
@@ -63,7 +94,8 @@ submit = (event) => {
                     cols="30" 
                     rows="10" 
                     value={this.state.body}
-                    onChange={this.handleChange}></textarea>
+                    onChange={this.handleChange}>
+                    </textarea>
                 </div>
                 <button className="btn_submit">Submit</button>
             </form>

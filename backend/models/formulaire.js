@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const nodemon = require('nodemon');
 const concurrently = require('concurrently');
+const cors = require('cors');
 
 //Schema : squelette de l'API qu'on veut créer
 const Schema = mongoose.Schema;

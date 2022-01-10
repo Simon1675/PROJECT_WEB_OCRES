@@ -1,16 +1,9 @@
-//import express from 'express'
-//import DataStore from 'nedb'
-//import morgan from 'morgan'
-//import mongoose from 'mongoose'
-//import nodemon from 'nodemon'
-//import concurrently from 'concurrently'
-//import { Double } from 'bson'
-//import routes from './routes/api.js';
 const express = require('express');
 const mongoose = require('mongoose');
 const nodemon = require('nodemon');
 const concurrently = require('concurrently');
 const cors = require('cors');
+const path = require('path');
 
 const DataStore = require('nedb')
 
@@ -46,22 +39,7 @@ mongoose.connection.on('connected', () => {
 });
 
 
-app.use(express.json())
-
-//On a vu que l'accès au localhost:8000 du coup on a écrit ce code qui permet de libérer l'accès
-app.all('/:id', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Method", "GET, POST, OPTION");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    next()
-  });
-  app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Method", "GET, POST, OPTION");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    next()
-  });
-
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
 app.use(cors());
 app.use('/api', routes);
